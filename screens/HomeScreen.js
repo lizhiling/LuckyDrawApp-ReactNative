@@ -8,9 +8,10 @@ import {
     View,
     Alert
 } from 'react-native';
-import {Card, Button, Icon, ButtonGroup} from 'react-native-elements'
+import {Card, ButtonGroup} from 'react-native-elements'
 import {connect} from 'react-redux';
 import {retrieveCards, useCard} from './reducers/HomeReducer'
+import {CARD_COLORS} from '../constants/Constants'
 
 export class HomeScreen extends React.Component {
     static navigationOptions = {
@@ -92,14 +93,15 @@ export class HomeScreen extends React.Component {
 export class LuckyCard extends React.Component {
     render() {
         const {card} = this.props;
-        const desc = card.type.desc.replace("$value", card.value * card.type.multiplyNumber);
+        const desc = card.type.desc.replace("$value", (card.value * card.type.multiplyNumber).toFixed(2));
 
         if (this.props.showUsed || !card.used) {
             return <TouchableOpacity onPress={card.used ? ()=>{} :() => this._handleUseCard(card.uuid)}>
-                <Card
-                    wrapperStyle={card.used ? {backgroundColor: '#E1E1E1'}: {backgroundColor: 'white'}}
-                title={card.type.name.toUpperCase()}
-                image={{uri: 'https://s3.ap-southeast-1.amazonaws.com/cardstore-vini/cards/'+card.type.id+'.png'}}>
+                <Card wrapperStyle={card.used ? {backgroundColor: '#E1E1E1'}: {backgroundColor: 'white'}}
+                    title={card.type.name.toUpperCase()}
+                    image={{uri: 'https://s3.ap-southeast-1.amazonaws.com/cardstore-vini/cards/'+card.type.id+'.png'}}
+                    titleStyle={{color: CARD_COLORS[card.value - 1]}}
+                >
             <Text style={{marginBottom: 10, marginLeft: 20}}>
                     {desc}
                 </Text>

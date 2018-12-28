@@ -7,6 +7,7 @@ import axiosMiddleware from 'redux-axios-middleware';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider, connect } from 'react-redux';
 import reducer from './screens/reducers/index'
+import { updateFocus, getCurrentRouteKey } from 'react-navigation-is-focused-hoc'
 
 const client = axios.create({
     responseType: 'json'
@@ -33,7 +34,17 @@ export default class App extends React.Component {
                 <Provider store={store}>
                     <View style={styles.container}>
                         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-                        <AppNavigator />
+                        <AppNavigator onNavigationStateChange={(prevState, currentState) => {
+                            console.log("aaaa")
+                            // If you want to ignore the state changed from `DrawerNavigator`, use this:
+                            /*
+                              if (/^Drawer(Open|Close|Toggle)$/.test(getCurrentRouteKey(currentState)) === false) {
+                                updateFocus(currentState)
+                                return
+                              }
+                            */
+                            updateFocus(currentState)
+                        }}/>
                     </View>
                 </Provider>
             );

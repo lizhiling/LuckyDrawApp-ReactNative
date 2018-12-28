@@ -3,8 +3,9 @@ import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/ShopScreen';
+import ShopScreen from '../screens/ShopScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import PhotoCollectionScreen from "../screens/PhotoCollectionScreen";
 
 const HomeStack = createStackNavigator({
     Home: HomeScreen,
@@ -21,7 +22,7 @@ HomeStack.navigationOptions = {
 };
 
 const ShopStack = createStackNavigator({
-    Links: LinksScreen,
+    Shop: ShopScreen,
 });
 
 ShopStack.navigationOptions = {
@@ -35,7 +36,8 @@ ShopStack.navigationOptions = {
 };
 
 const ProfileStack = createStackNavigator({
-    Links: ProfileScreen
+    Profile: ProfileScreen,
+    Photo: PhotoCollectionScreen
 });
 ProfileStack.navigationOptions = {
     tabBarLabel: "个人中心",

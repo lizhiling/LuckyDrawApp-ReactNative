@@ -19,7 +19,9 @@ import {Card, Button} from "react-native-elements";
 import CustomMultiPicker from "react-native-multiple-select-list";
 import Overlay from "react-native-modal-overlay";
 import {CARD_COLORS, STYLES} from '../constants/Constants'
+import {withNavigationFocus} from "react-navigation-is-focused-hoc";
 
+@withNavigationFocus
 export class ShopScreen extends React.Component {
     static navigationOptions = {
         title: '黑店',
@@ -34,7 +36,7 @@ export class ShopScreen extends React.Component {
             showExchange: false,
             showLuckyDraw: false,
             pan: new Animated.ValueXY()
-        }
+        };
 
         this.panResponder = PanResponder.create({    //Step 2
             onStartShouldSetPanResponder : () => true,

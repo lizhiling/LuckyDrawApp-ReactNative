@@ -81,7 +81,7 @@ export class SignInScreen extends React.Component {
                         AsyncStorage.setItem('user', username),
                         AsyncStorage.setItem('pswd', password),
                         AsyncStorage.setItem('validated', "1"),
-                        AsyncStorage.setItem('nickname', data.nickname)
+                        AsyncStorage.setItem('nickname', data.nickname),
                     ]).then(() => {
                         global.USER = username;
                         global.TOKEN = password;

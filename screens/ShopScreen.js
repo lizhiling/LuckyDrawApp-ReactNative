@@ -18,7 +18,7 @@ import {MonoText} from "../components/StyledText";
 import {Card, Button} from "react-native-elements";
 import CustomMultiPicker from "react-native-multiple-select-list";
 import Overlay from "react-native-modal-overlay";
-import {CARD_COLORS} from '../constants/Constants'
+import {CARD_COLORS, STYLES} from '../constants/Constants'
 
 export class ShopScreen extends React.Component {
     static navigationOptions = {
@@ -143,7 +143,7 @@ export class ShopScreen extends React.Component {
                     scrollViewHeight={200}
                 />
                 {this._renderExchangedMessage()}
-                <Button title="换" buttonStyle={styles.button} onPress={this._handleExchangeCards}
+                <Button title="换" buttonStyle={STYLES.primaryButton} onPress={this._handleExchangeCards}
                         disabled={this.state.outCardsIds.length === 0 || (exchangeSuccess && exchanged)}/>
             </View>
         </Modal>
@@ -223,8 +223,6 @@ export class ShopScreen extends React.Component {
     };
 
     _handleLuckyDrawClose = () => {
-        console.log("close lucky");
-        console.log(this.state.showLuckyDraw);
         this.setState({'showLuckyDraw': false});
         this.props.luckyDrawClose();
     }
@@ -277,14 +275,5 @@ const styles = StyleSheet.create({
         position    : 'absolute',
         top         : Window.height/2 - CIRCLE_RADIUS,
         left        : Window.width/2 - CIRCLE_RADIUS,
-    },
-    button: {
-        backgroundColor: "rgba(92, 99,216, 1)",
-        width: 300,
-        height: 45,
-        borderColor: "transparent",
-        borderWidth: 0,
-        borderRadius: 5,
-        alignSelf:'center'
     }
 });

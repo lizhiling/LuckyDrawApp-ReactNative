@@ -5,9 +5,6 @@ export const LIST_CARDS_FAIL = 'LIST_CARDS_FAIL';
 export const USE_CARD_SUCCESS = 'USE_CARD_SUCCESS';
 export const USE_CARD_FAIL = 'USE_CARD_FAIL';
 
-const user = 'zhaodazhu';
-const token = 'thisisasecretofzhaodazhu';
-
 const initialState = {
     cards: [],
     error: false,
@@ -49,8 +46,8 @@ export function retrieveCards() {
                 url: `https://qz3vwsx074.execute-api.ap-southeast-1.amazonaws.com/default/retrieveCards`,
                 method: "post",
                 data: {
-                    "user": user,
-                    "token": token
+                    "user": global.USER,
+                    "token": global.TOKEN
                 }
             }
         }
@@ -65,8 +62,8 @@ export function useCard(cardId) {
                 url: `https://gxd6049ro9.execute-api.ap-southeast-1.amazonaws.com/default/UseCard`,
                 method: "post",
                 data: {
-                    "user": user,
-                    "token": token,
+                    "user": global.USER,
+                    "token": global.TOKEN,
                     "uuid": cardId
                 }
             }

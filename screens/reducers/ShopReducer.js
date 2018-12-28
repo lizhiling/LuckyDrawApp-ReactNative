@@ -1,8 +1,4 @@
-const user = 'zhaodazhu';
-const token = 'thisisasecretofzhaodazhu';
-
-const store = 'systemstore';
-const storeToken = 'thisisasecretofheidian';
+import {STORE, STORE_TOKEN} from '../../constants/Constants'
 
 export const LUCKY_DRAW = 'LUCKY_DRAW';
 export const LUCKY_DRAW_SUCCESS = 'LUCKY_DRAW_SUCCESS';
@@ -64,7 +60,12 @@ export default function shopReducer(state = initialState, action) {
             if (action.payload.data.message !== "success") {
                 return {...state, exchangeSuccess: false, exchanged: true, loading: false}
             }
-            return {...state, exchangeSuccess: true, exchanged: true, needsRefresh: true, loading: false};
+            return {...state,
+                exchangeSuccess: true,
+                exchanged: true,
+                needsRefresh: true,
+                loading: false
+            };
         case OPEN_CARD:
             return {...state, exchanged: false};
         case LUCKY_DRAW_MODAL_SUCCESS:
@@ -107,8 +108,8 @@ export function listCardsSelling() {
                 url: `https://qz3vwsx074.execute-api.ap-southeast-1.amazonaws.com/default/retrieveCards`,
                 method: "post",
                 data: {
-                    "user": store,
-                    "token": storeToken
+                    "user": STORE,
+                    "token": STORE_TOKEN
                 }
             }
         }
@@ -123,8 +124,8 @@ export function luckyDraw() {
                 method: "post",
                 url: `https://6znk17m66k.execute-api.ap-southeast-1.amazonaws.com/default/drawCard`,
                 data: {
-                    "user": user,
-                    "token": token
+                    "user": global.USER,
+                    "token": global.TOKEN
                 },
             }
         }
@@ -139,8 +140,8 @@ export function buyCard(cardsOutIds, cardInId) {
                 method: "post",
                 url: `https://i8xzvrh9wf.execute-api.ap-southeast-1.amazonaws.com/default/exchangeCardWithStore`,
                 data: {
-                    "user": user,
-                    "token": token,
+                    "user": USER,
+                    "token": TOKEN,
                     "cardsOut": cardsOutIds,
                     "cardIn": cardInId
                 }

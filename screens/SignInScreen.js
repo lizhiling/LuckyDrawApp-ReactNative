@@ -88,11 +88,9 @@ export class SignInScreen extends React.Component {
                         global.NICKNAME = data.nickname;
                         this.setState({showInvalidPswd: false});
 
-                    }).then(
-                        () => this.props.navigation.navigate('Main')
-                    );
+                        this.props.navigation.navigate('Main');
+                    });
                 } else {
-
                     this.setState({showInvalidPswd: true})
                 }
             }

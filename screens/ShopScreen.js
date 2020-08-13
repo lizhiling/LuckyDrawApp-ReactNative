@@ -18,7 +18,7 @@ import {MonoText} from "../components/StyledText";
 import {Card, Button} from "react-native-elements";
 import CustomMultiPicker from "react-native-multiple-select-list";
 import Overlay from "react-native-modal-overlay";
-import {CARD_COLORS, STYLES} from '../constants/Constants'
+import {CARD_COLORS, CARDS_URL, STYLES} from '../constants/Constants'
 import {withNavigationFocus} from "react-navigation-is-focused-hoc";
 
 @withNavigationFocus
@@ -77,7 +77,7 @@ export class ShopScreen extends React.Component {
                                         title={c.type.name.toUpperCase()}
                                         imageStyle={styles.image}
                                         style={styles.shopCard}
-                                        image={{uri: 'https://s3.ap-southeast-1.amazonaws.com/cardstore-vini/cards/' + c.type.id + '.png'}}
+                                        image={{uri: CARDS_URL + c.type.id + '.png'}}
                                         titleStyle={{color: CARD_COLORS[c.value - 1]}}
                                     >
                                     </Card>
@@ -177,7 +177,7 @@ export class ShopScreen extends React.Component {
                         <Card title={drawnCard.type.name.toUpperCase()}
                               imageStyle={styles.drawnCardImage}
                               style={styles.drawnCard}
-                              image={{uri: 'https://s3.ap-southeast-1.amazonaws.com/cardstore-vini/cards/' + drawnCard.type.id + '.png'}}>
+                              image={{uri: CARDS_URL + drawnCard.type.id + '.png'}}>
                             <Text>哟哟哟，获得新卡了哦！</Text>
                         </Card> : <Text>今天抽过了哦～ </Text>
                 ): <Text/>

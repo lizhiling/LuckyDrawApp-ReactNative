@@ -1,7 +1,7 @@
 import {AsyncStorage, StatusBar, StyleSheet, Text, View} from "react-native";
 import React from "react";
 import Button from "react-native-elements/src/buttons/Button";
-import {STYLES} from "../constants/Constants"
+import {PHOTO_URL, STYLES} from "../constants/Constants"
 import Gallery from 'react-native-image-gallery';
 
 export default class PhotoCollectionScreen extends React.Component {
@@ -13,7 +13,7 @@ export default class PhotoCollectionScreen extends React.Component {
         const imageIds = this.props.navigation.getParam('photos');
         const images = imageIds.map((id) => {
             return {
-                source: { uri: "https://s3-ap-southeast-1.amazonaws.com/cardstore-vini/img/photos/" + id + ".jpg" }
+                source: { uri: PHOTO_URL + id + ".jpg" }
             }
         });
 

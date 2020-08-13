@@ -11,7 +11,7 @@ import {
 import {Card, ButtonGroup} from 'react-native-elements'
 import {connect} from 'react-redux';
 import {closePhotoOverlay, retrieveCards, useCard} from './reducers/HomeReducer'
-import {CARD_COLORS} from '../constants/Constants'
+import {CARD_COLORS, CARDS_URL} from '../constants/Constants'
 import Overlay from "react-native-modal-overlay";
 import {withNavigationFocus} from "react-navigation-is-focused-hoc";
 
@@ -125,7 +125,7 @@ export class LuckyCard extends React.Component {
             } : () => this._handleUseCard(card.uuid)} disabled={card.used}>
                 <Card wrapperStyle={card.used ? {backgroundColor: '#E1E1E1'} : {backgroundColor: 'white'}}
                       title={card.type.name.toUpperCase()}
-                      image={{uri: 'https://s3.ap-southeast-1.amazonaws.com/cardstore-vini/cards/' + card.type.id + '.png'}}
+                      image={{uri: CARDS_URL + card.type.id + '.png'}}
                       titleStyle={{color: CARD_COLORS[card.value - 1]}}
                 >
                     <Text style={{marginBottom: 10, marginLeft: 20}}>

@@ -2,6 +2,8 @@ export const CARD_COLORS = ['black', 'black', 'black', '#73b76e', '#73b76e', '#7
 
 export const STORE = 'systemstore';
 export const STORE_TOKEN = 'thisisasecretofheidian';
+export const CARDS_URL = 'https://d2t9lsem3h5v2r.cloudfront.net/cards/';
+export const PHOTO_URL = 'https://d2t9lsem3h5v2r.cloudfront.net/img/photos/';
 
 export const STYLES = {
     primaryButton: {
